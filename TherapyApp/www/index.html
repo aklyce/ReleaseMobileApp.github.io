@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+        <title>Release App</title>
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile.structure-1.4.5.min.css" />
+		<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+		<link rel="stylesheet" href="css/index.css"/>
+		<script src="js/index.js"></script>
+		
+	</head>
+    <body>
+       <div id="pageHome" data-role="page">
+          
+          
+               
+        <div data-role="main" class="ui-content" >
+            <p style="font-size:40px; background-color: azure; opacity: 70%"> R E L E A S E </p>
+            
+            <h1 style="font-size:20px; background-color: azure; opacity: 70%;text-transform: lowercase">  
+                <span style="text-transform: uppercase;">A</span> mental health app to help you release negative thoughts, emotions, and feelings through providing a safe space to journal and jam to curated spotify playlists based off your mood.   
+                
+            </h1>
+        </div>
+        
+        <div data-role="footer" data-id="foo1" data-position="fixed">
+            <div data-role="navbar">
+                       <ul> 
+                           <li style="background-color: darkorange"> <a href="#pageHome" ><img src="../appPictures/home3.png" width="70px" height="70px"></a> </li>
+                           <li style="background-color: green;"> <a href="#pageJournal"><img src="../appPictures/journal.png" width="70px" height="70px"></a></li>
+                           <li style="background-color: saddlebrown;"> <a href="#pageSpotify"><img src="../appPictures/spotify.png" width="70px" height="70px"></a></li>
+                       </ul>
+               </div>
+           </div>
+		</div>
+       
+================================================================
+        
+        <div data-role="page" id="pageJournal" >  
+               
+        <div data-role="main" class="ui-content" >
+            <p style="font-size:40px;background-color: azure; opacity: 70%"> R E L E A S E </p>
+            <h1 style="font-size:20px; background-color: azure; opacity: 70%"> New Journal <a href="#newJournal" ><img src="../appPictures/arrow.png" width="40px" ></a> <br> All Journal Entries <a href="#allEntries" onclick="getAllDates()"><img src="../appPictures/dropdown.png" width="40px"></a></h1>
+        </div>
+        
+        
+        <div data-role="footer" data-id="foo1" data-position="fixed">
+                    <div data-role="navbar">
+                       <ul> 
+                           <li style="background-color: darkorange"> <a href="#pageHome" ><img src="../appPictures/home3.png" width="70px" height="70px"></a> </li>
+                           <li style="background-color: green;"> <a href="#pageJournal"><img src="../appPictures/journal.png" width="70px" height="70px"></a></li>
+                           <li style="background-color: saddlebrown;"> <a href="#pageSpotify"><img src="../appPictures/spotify.png" width="70px" height="70px"></a></li>
+                       </ul>
+               </div>
+           </div> </div>
+           
+================================================================
+
+        
+        <div data-role="page" id="pageSpotify">       
+        
+        <div data-role="main" class="ui-content">
+            <p style="font-size:40px; background-color: azure; opacity: 70%"> R E L E A S E </p>
+            
+            <h1 style="font-size:20px; background-color: azure; opacity: 70%"> 
+              
+               <label for="mood">1. Select Your Mood</label>
+            <div class="ui-select">
+            
+                <select id="selectMood">
+                  <option value="angry">Angry</option>
+                  <option value="sad">Sad</option>
+                  <option value="happy">Happy</option>
+                  <option value="random">blahhh</option>
+                </select>
+             </div>
+            
+            
+          
+            <label for="artist">2. Select Three Top Artists</label>
+            <div class="ui-select">
+                <div id="selectArtist-button" onchange="spotify()">
+                <span></span>
+                <select id="selectArtist">
+                  <option value="Megan Thee Stallion" onchange="spotify()">Megan Thee Stallion</option>
+                  <option value="Solange" onchange="spotify()">Solange</option>
+                  <option value="Beyonce" onchange="spotify()">Beyonce</option>
+                  <option value="Marvin Sapp" onchange="spotify()">Marvin Saap</option>
+                </select>
+                </div>
+                </div>
+         </h1>
+        </div>
+        
+        <div data-role="footer" data-id="foo1" data-position="fixed">
+                    <div data-role="navbar">
+                       <ul> 
+                           <li style="background-color: darkorange"> <a href="#pageHome" ><img src="../appPictures/home3.png" width="70px" height="70px"></a> </li>
+                           <li style="background-color: green;"> <a href="#pageJournal"><img src="../appPictures/journal.png" width="70px" height="70px"></a></li>
+                           <li style="background-color: saddlebrown;"> <a href="#pageSpotify"><img src="../appPictures/spotify.png" width="70px" height="70px"></a></li>
+                       </ul>
+               </div>
+           </div></div>
+  ================================================================
+        
+        <div data-role="page" id="newJournal">
+            <div data-role="main">
+                <p style="font-size:40px; background-color: azure; opacity: 70%"> <a href="#pageJournal"><img src="../appPictures/leftarrow.png" width="40px"></a> R E L E A S E </p>
+                <h1 id="currentDate" onload="postDate()">
+                   <p id="date1">Date: </p>
+                </h1>
+                
+                <h2>
+                    <div>
+                      <span style="text-transform: lowercase;">Enter title Below: </span>
+                       <textarea id ="entryTitle" style="background-color: darkgrey;"></textarea>
+                       <textarea id ="journalEntry" name="comment" form="usrform">Dear Diary...</textarea>
+                        <input id="entry" type="button" value="Save" onClick="saveJournal()">
+                    </div>
+                </h2>
+
+                
+            </div>
+        </div>
+        
+================================================================
+       
+        <div data-role="page" id="allEntries">
+            <div data-role="main">
+             <p style="font-size:40px; background-color: azure; opacity: 70%"> <a href="#pageJournal"><img src="../appPictures/leftarrow.png" width="40px"></a> R E L E A S E </p>
+            </div>
+            <div>
+                <ul id="entryList">
+                
+                </ul>
+            </div>
+        </div>
+        
+        
+================================================================
+<!--
+    <div data-role="page" id="selectMood">
+            <div data-role="main">
+               
+        </div>
+        </div>
+-->
+
+    </body>
+</html>
